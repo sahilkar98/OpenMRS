@@ -1,0 +1,7 @@
+<suite name="OpenMRS">
+	<test name="testngTest">
+		<classes>
+			<class name="test.LoginTest"> </class>
+		</classes>
+	</test>
+</suite>
