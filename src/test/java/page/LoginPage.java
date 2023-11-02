@@ -10,6 +10,7 @@ public class LoginPage {
 	private By passwordLocator = By.xpath("//input[@id='password']");
 	
 	private By loginButton = By.xpath("//input[@id='loginButton']");
+	private By logoutButton =By.xpath("//a[contains(text(),'Logout')]");
 	private WebDriver driver;
 	
 	public LoginPage(WebDriver driver) {
@@ -27,6 +28,10 @@ public class LoginPage {
 	
 	public void clickOnLogin() {
 		driver.findElement(loginButton).click();
+	}
+	
+	public void logout() {
+		driver.findElement(logoutButton).click();
 	}
 	
 }

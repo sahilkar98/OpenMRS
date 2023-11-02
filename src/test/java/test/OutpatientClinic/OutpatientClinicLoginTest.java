@@ -1,14 +1,14 @@
-package test;
+package test.OutpatientClinic;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.WebDriverWrapper;
 import page.LoginPage;
-import page.Pharmacy;
+import page.OutpatientClinic;
 import utilities.DataProviderUtils;
 
-public class PharmacyLoginTest extends WebDriverWrapper {
+public class OutpatientClinicLoginTest extends WebDriverWrapper {
 
 	
 	@Test(dataProvider = "validCredentialData",dataProviderClass = DataProviderUtils.class)
@@ -17,11 +17,13 @@ public class PharmacyLoginTest extends WebDriverWrapper {
 		lp.sendUsername(username);
 		lp.sendPassword(password);
 		
-		Pharmacy ph = new Pharmacy(driver);
-		ph.clickPharmacy();
+		OutpatientClinic oc = new OutpatientClinic(driver);
+		oc.clickOutpatientClinic();
 		lp.clickOnLogin();
-		Assert.assertEquals(ph.getPharmacyLoggedinMessage(), "Logged in as Super User (admin) at Pharmacy.");
+		
+		Assert.assertEquals(oc.getoutpatientLoggedinMessage(), "Logged in as Super User (admin) at Outpatient Clinic.");
 		Thread.sleep(10000);
+		
 		lp.logout();
 	}
 }
