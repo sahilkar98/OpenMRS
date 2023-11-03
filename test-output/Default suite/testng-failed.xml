@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.OutpatientClinic.RegisterPatientTest">
+      <class name="test.Pharmacy.PharmacyRegisterPatientTest">
         <methods>
-          <include name="registerPatientRecordTest" invocation-numbers="0"/>
           <include name="teardown"/>
           <include name="setUp"/>
+          <include name="pharmcyRegisterPatientRecordTest" invocation-numbers="0"/>
         </methods>
-      </class> <!-- test.OutpatientClinic.RegisterPatientTest -->
+      </class> <!-- test.Pharmacy.PharmacyRegisterPatientTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

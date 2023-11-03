@@ -10,7 +10,7 @@ import utilities.DataProviderUtils;
 public class AppointmentSchedulingManageServiceTypes extends WebDriverWrapper {
 
 	@Test(dataProvider = "validCredentialData", dataProviderClass = DataProviderUtils.class)
-	public void outpatientClinicValidCredentialtest(String username, String password) throws InterruptedException {
+	public void appointmentSchedulingManageServiceTypesTest(String username, String password) throws InterruptedException {
 		LoginPage lp = new LoginPage(driver);
 		lp.sendUsername(username);
 		lp.sendPassword(password);
