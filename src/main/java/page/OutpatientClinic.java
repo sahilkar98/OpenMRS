@@ -3,10 +3,13 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import base.StringGenerator;
+import base.WebDriverWrapper;
 
-public class OutpatientClinic {
+
+public class OutpatientClinic extends WebDriverWrapper {
 	private By outpatientClinicButton = By.xpath("//li[@id='Outpatient Clinic']");
 	private By outpatientLoggedInMessage= By.xpath("//div/h4[contains(text(),'Logged in as Super User (admin) at Outpatient Clinic.')]");
 	private By findPatientRecordLocator = By.xpath("//a/i[@class='icon-search']");
@@ -34,6 +37,13 @@ public class OutpatientClinic {
 	private By nameNewServiceTypeLocator = By.xpath("//input[@name='name']");
 	private By durationNewServiceTypeLocator = By.xpath("//input[@name='duration']");
 	private By saveButtoninNewServiceLocator = By.xpath("//input[@class='confirm right']");
+	private By appointmentRequestsLocator = By.xpath("//div/a[contains(@id,'appointmentRequests')]");
+	private By appointmentRequesterNameLocator= By.xpath("//tr/td[1]");
+	private By manageAppointmentsLocator = By.xpath("//div/a[contains(@id,'manageAppointments')]");
+	private By navigateBackToAppointmentSchedulingPageLocator = By.xpath("//li/a[contains(text(),'Appointment Scheduling')]");
+	private By patientGivenNameLocator = By.xpath("//span[@class='PersonName-givenName']");
+	private By patientFamilyNameLocator = By.xpath("//span[@class='PersonName-familyName']");
+	private By noAppointmentLocator = By.xpath("//span/p[contains(text(),'No appointment requests')]");
 	
 	private WebDriver driver;
 	
@@ -128,5 +138,27 @@ public class OutpatientClinic {
 		driver.findElement(nameNewServiceTypeLocator).sendKeys("123test");
 		driver.findElement(durationNewServiceTypeLocator).sendKeys("134");
 		driver.findElement(saveButtoninNewServiceLocator).click();
+	}
+	
+	public void searchAppointmentmentRequesterName() throws InterruptedException {
+		driver.findElement(appointmentRequestsLocator).click();
+		Thread.sleep(10000);
+		if(driver.findElement(noAppointmentLocator).isDisplayed() == true) {
+			System.out.println("No Appointments are present");
+			logger.fail("No Appointments are present");
+		}
+		else {
+		String st = driver.findElement(appointmentRequesterNameLocator).getText();
+		driver.findElement(navigateBackToAppointmentSchedulingPageLocator).click();
+		driver.findElement(manageAppointmentsLocator).click();
+		Thread.sleep(10000);
+		driver.findElement(inputPatientIDLocator).sendKeys(st);
+		Thread.sleep(10000);
+		driver.findElement(identifierID).click();
+		String A = driver.findElement(patientGivenNameLocator).getText();
+		String B = driver.findElement(patientFamilyNameLocator).getText();
+		String actual = A + " " +B;
+		Assert.assertEquals(st, actual);
+		}
 	}
 }

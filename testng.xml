@@ -1,7 +1,7 @@
 <suite name="OpenMRS">
 	<test name="testngTest">
 		<classes>
-			<class name="test.LoginTest"> </class>
+			<class name="test.Pharmacy.PharmacyManageAppointmentsTest"> </class>
 		</classes>
 	</test>
 </suite>
