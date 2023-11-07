@@ -1,5 +1,7 @@
 package utilities;
 
+import java.io.IOException;
+
 import org.testng.annotations.DataProvider;
 
 public class DataProviderUtils {
@@ -12,5 +14,13 @@ public class DataProviderUtils {
 
 		return obj;
 
+	}
+
+	@DataProvider
+	public Object[][] registerPatientExcelData() throws IOException {
+
+		Object[][] main = ExcelUtils.sheetIntoObjectArray("resources/testData/OpenMRSExcelDP.xlsx",
+				"RegisterPatientExcelDPTest");
+		return main;
 	}
 }

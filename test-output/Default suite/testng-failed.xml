@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test.RegistrationDesk.RegistrationDeskManageAppointmentsTest">
+      <class name="test.OutpatientClinic.CaptureVitals">
         <methods>
           <include name="aftertest"/>
-          <include name="registrationDeskManageAppointmentsTest" invocation-numbers="0"/>
           <include name="beforeTestMethod"/>
           <include name="setUp"/>
           <include name="afterMethod"/>
+          <include name="searchCapturevitalsByNametest" invocation-numbers="0"/>
         </methods>
-      </class> <!-- test.RegistrationDesk.RegistrationDeskManageAppointmentsTest -->
+      </class> <!-- test.OutpatientClinic.CaptureVitals -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
