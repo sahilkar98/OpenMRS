@@ -1,7 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="OpenMRS">
 	<test name="testngTest">
 		<classes>
-			<class name="test.Pharmacy.PharmacyManageAppointmentsTest"> </class>
+			
+			<class name="test.OutpatientClinic.OutpatientClinicLoginTest"> </class>
+			<class name="test.OutpatientClinic.OutpatientClinicManageAppointmentsTest"> </class>
+			<class name="test.OutpatientClinic.AppointmentSchedulingManageServiceTypes"> </class>
+			
+			<class name="test.OutpatientClinic.FindPatientRecordTest"> </class>
+			<class name="test.OutpatientClinic.SearchCapturevitalsByName"> </class>
+			<class name="test.OutpatientClinic.SearchCapturevitalsByPatientID"> </class>
+			<class name="test.OutpatientClinic.RegisterPatientTest"> </class>
+			<class name="test.OutpatientClinic.RegisterPatientExcelDPTest"> </class>
+			<class name="test.OutpatientClinic.CaptureVitals"> </class>
 		</classes>
 	</test>
 </suite>
+

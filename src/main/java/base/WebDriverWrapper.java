@@ -2,9 +2,12 @@ package base;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.time.Duration;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -27,6 +30,7 @@ public class WebDriverWrapper {
 	public ExtentReports extent;
 	public static ExtentTest logger;
 	
+	
 	@BeforeTest
 	public void beforeTestMethod() {
 		sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+File.separator+"reports"+File.separator+"TestReports.html");
@@ -47,8 +51,8 @@ public class WebDriverWrapper {
 		logger = extent.createTest(testMethod.getName());
 		driver.manage().window().maximize();
 		driver.get("https://demo.openmrs.org/openmrs/login.htm");
-
 		driver.manage().timeouts().getImplicitWaitTimeout();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
 	@AfterMethod
@@ -71,11 +75,5 @@ public class WebDriverWrapper {
 	public void aftertest() {
 		extent.flush();
 	}
-
-	/*
-	 * @AfterMethod public void teardown() { driver.quit();
-	 * 
-	 * }
-	 */
 
 }

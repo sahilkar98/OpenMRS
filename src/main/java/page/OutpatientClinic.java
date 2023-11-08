@@ -60,6 +60,8 @@ public class OutpatientClinic extends WebDriverWrapper {
 	private By bpDLocator = By.xpath("//span[@id='bp_diastolic']/input");
 	private By o2SatLocator = By.xpath("//span[@id='o2_sat']/input");
 	private By saveVitalsButtonLocator = By.xpath("//button[contains(text(),'Save')]");
+	//private By toasterLocator = By.xpath("//div[@class='toast-container toast-position-top-right']");
+	
 	
 	private WebDriver driver;
 
@@ -165,9 +167,9 @@ public class OutpatientClinic extends WebDriverWrapper {
 			String st = driver.findElement(appointmentRequesterNameLocator).getText();
 			driver.findElement(navigateBackToAppointmentSchedulingPageLocator).click();
 			driver.findElement(manageAppointmentsLocator).click();
-			Thread.sleep(10000);
+			
 			driver.findElement(inputPatientIDLocator).sendKeys(st);
-			Thread.sleep(10000);
+			
 			driver.findElement(identifierID).click();
 			String A = driver.findElement(patientGivenNameLocator).getText();
 			String B = driver.findElement(patientFamilyNameLocator).getText();
@@ -192,7 +194,6 @@ public class OutpatientClinic extends WebDriverWrapper {
 
 	public String firstCharacters(String str) {
 
-		
 		if (str == null || str.isEmpty())
 			return null;
 		if (str.length() > 6)
@@ -212,88 +213,91 @@ public class OutpatientClinic extends WebDriverWrapper {
 		driver.findElement(searchedPatientLocator).click();
 		String actual = driver.findElement(createdPatientID).getText();
 		Assert.assertEquals(identifier, actual);
-		
 
 	}
-	
-	public void enterNameofPatientExcel(String given,String middle, String familyName) {
+
+	public void enterNameofPatientExcel(String given, String middle, String familyName) {
 		driver.findElement(givenNameLocator).sendKeys(given);
 		driver.findElement(middleNameLocator).sendKeys(middle);
 		driver.findElement(familyNameLocator).sendKeys(familyName);
 		driver.findElement(confirmButtonLocator).click();
 	}
-	
+
 	public void enterBirtdateExcel(String day, String year) {
 		driver.findElement(birthdayLoctor).sendKeys(day);
 		driver.findElement(birthMonthLoctor).click();
 		driver.findElement(birthYearLoctor).sendKeys(year);
 		driver.findElement(confirmButtonLocator).click();
 	}
-	
+
 	public void enterAddressExcel(String address) {
 		driver.findElement(addressLocator).sendKeys(address);
 		driver.findElement(confirmButtonLocator).click();
 	}
-	
+
 	public void enterPhoneNumberExcel(String phone) {
 		driver.findElement(phoneNumberLocator).sendKeys(phone);
 		driver.findElement(confirmButtonLocator).click();
 	}
+
 	public void enterRelativesExcel(String personName) {
 		driver.findElement(relationshipLocator).click();
 		driver.findElement(personNameLocator).sendKeys(personName);
 		driver.findElement(confirmButtonLocator).click();
 	}
-	
+
 	public void captureVitalsMethod() throws InterruptedException {
+
 		
 		try {
-			if(driver.findElement(yesRecordVitalsLocator).isDisplayed()) {
+			if (!driver.findElements(yesRecordVitalsLocator).isEmpty()) {
 				driver.findElement(yesRecordVitalsLocator).click();
 				driver.findElement(enterHeightLocator).sendKeys("181");
 				driver.findElement(nextConfirmButton).click();
-				
+
 				driver.findElement(enterWeightLocator).sendKeys("84");
 				driver.findElement(nextConfirmButton).click();
-				
+
 				driver.findElement(calculateBMILocator).isDisplayed();
 				System.out.println(driver.findElement(calculateBMILocator).getText());
 				driver.findElement(nextConfirmButton).click();
-				
+
 				driver.findElement(enterTemperatureLocator).sendKeys("38");
 				driver.findElement(nextConfirmButton).click();
-			
+
 				driver.findElement(pulseLocator).sendKeys("60");
 				driver.findElement(nextConfirmButton).click();
-				Thread.sleep(4000);
+				
 				driver.findElement(respRateLocator).sendKeys("88");
 				driver.findElement(nextConfirmButton).click();
-				Thread.sleep(4000);
+				
 				driver.findElement(bpSLocator).sendKeys("60");
-				driver.findElement(nextConfirmButton).click();
-				Thread.sleep(4000);
+
+			
 				driver.findElement(bpDLocator).sendKeys("100");
-				driver.findElement(nextConfirmButton).click();
 				Thread.sleep(4000);
+				driver.findElement(nextConfirmButton).click();
+			
 				driver.findElement(o2SatLocator).sendKeys("88");
 				driver.findElement(nextConfirmButton).click();
-				Thread.sleep(4000);
-				driver.findElement(saveVitalsButtonLocator).click();
-				
-				
-				
-				
-			}
-			else if(driver.findElement(findAnotherPatientButtonLocator).isDisplayed()) {
-				
-				driver.findElement(findAnotherPatientButtonLocator).click();
-			}
 			
+				driver.findElement(saveVitalsButtonLocator).click();
+				//driver.findElement(toasterLocator).getText();
+			
+
+			}
+
+			else if (driver.findElement(findAnotherPatientButtonLocator).isDisplayed()) {
+				driver.findElement(findAnotherPatientButtonLocator).click();
+				Thread.sleep(10000);
+
+			}
+
 		} catch (Exception e) {
+
 			e.printStackTrace();
 		}
-		
-		
+
 	}
-	
+
 }

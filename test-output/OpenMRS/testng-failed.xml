@@ -1,15 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [OpenMRS]">
+<suite name="Failed suite [OpenMRS]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="testngTest(failed)">
     <classes>
-      <class name="test.LoginTest">
+      <class name="test.OutpatientClinic.OutpatientClinicManageAppointmentsTest">
         <methods>
-          <include name="teardown"/>
-          <include name="validCredentialtest"/>
+          <include name="outpatientClinicManageAppointmentsTest"/>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- test.LoginTest -->
+      </class> <!-- test.OutpatientClinic.OutpatientClinicManageAppointmentsTest -->
+      <class name="test.OutpatientClinic.RegisterPatientTest">
+        <methods>
+          <include name="registerPatientRecordTest"/>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.RegisterPatientTest -->
+      <class name="test.OutpatientClinic.RegisterPatientExcelDPTest">
+        <methods>
+          <include name="registerPatientRecordExcelDPTest"/>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.RegisterPatientExcelDPTest -->
+      <class name="test.OutpatientClinic.AppointmentSchedulingManageServiceTypes">
+        <methods>
+          <include name="appointmentSchedulingManageServiceTypesTest"/>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="setUp"/>
+          <include name="beforeTestMethod"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.AppointmentSchedulingManageServiceTypes -->
+      <class name="test.OutpatientClinic.FindPatientRecordTest">
+        <methods>
+          <include name="aftertest"/>
+          <include name="findPatientRecordTest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.FindPatientRecordTest -->
+      <class name="test.OutpatientClinic.SearchCapturevitalsByName">
+        <methods>
+          <include name="searchCapturevitalsByNametest"/>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="setUp"/>
+          <include name="beforeTestMethod"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.SearchCapturevitalsByName -->
+      <class name="test.OutpatientClinic.CaptureVitals">
+        <methods>
+          <include name="aftertest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
+          <include name="setUp"/>
+          <include name="searchCapturevitalsByNametest"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.CaptureVitals -->
+      <class name="test.OutpatientClinic.SearchCapturevitalsByPatientID">
+        <methods>
+          <include name="aftertest"/>
+          <include name="searchCapturevitalsByPatientIDtest"/>
+          <include name="afterMethod"/>
+          <include name="beforeTestMethod"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- test.OutpatientClinic.SearchCapturevitalsByPatientID -->
     </classes>
   </test> <!-- testngTest(failed) -->
 </suite> <!-- Failed suite [OpenMRS] -->
